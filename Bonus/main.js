@@ -41,7 +41,7 @@ function drawallPost(postArray){
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src=${authorpic === null ? 'Nessuna immagine' : authorpic} alt="Phil Mangione">                    
+                        ${authorpic === null ? getimage(authorname) :  `<img class="profile-pic" src="${authorpic}" alt="${authorname}"></img>` }                
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${authorname}</div>
@@ -122,3 +122,8 @@ function getdateitalian(date){
 }
 
 // 2. Gestire l'assenza dell'immagine profilo con un elemento di fallback che contiene le iniziali dell'utente (es. Luca Formicola > LF).
+function getimage(name){
+    const arra1 = name.split(' ');
+    const arra2 = arra1[0][0] + arra1[1][0];
+    return arra2;
+}
