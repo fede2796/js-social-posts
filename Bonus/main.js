@@ -3,7 +3,7 @@ const post = [
     {
         id : 1,
         authorname : 'Phil Mangione',
-        authorpic : 'https://unsplash.it/300/300?image=15',
+        authorpic : null,
         date : '06-20-2022',
         text : 'Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias',
         imagepic:' https://unsplash.it/300/300?image=171',
@@ -41,7 +41,7 @@ function drawallPost(postArray){
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src=${authorpic} alt="Phil Mangione">                    
+                        <img class="profile-pic" src=${authorpic === null ? 'Nessuna immagine' : authorpic} alt="Phil Mangione">                    
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${authorname}</div>
@@ -98,6 +98,18 @@ for(let i = 0; i < allLikesClick.length; i++){
             relatednumbertext.innerHTML = relatednumber;
             console.log(relatednumber);
         }
+        else{
+            this.classList.remove('like-button--liked');
+
+            const relatednumbertext = alllikeText[i];
+
+            let relatednumber = parseInt(relatednumbertext.innerHTML);
+
+            relatednumber--;
+
+            relatednumbertext.innerHTML = relatednumber;
+            console.log(relatednumber);
+        }
     })
 
 }
@@ -108,3 +120,5 @@ function getdateitalian(date){
     const arr2 = arr1[1] +'/'+ arr1[0] + '/'+ arr1[2];
     return arr2;
 }
+
+// 2. Gestire l'assenza dell'immagine profilo con un elemento di fallback che contiene le iniziali dell'utente (es. Luca Formicola > LF).
