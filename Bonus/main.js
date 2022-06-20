@@ -125,5 +125,5 @@ function getdateitalian(date){
 function getimage(name){
     const arra1 = name.split(' ');
     const arra2 = arra1[0][0] + arra1[1][0];
-    return arra2;
+    return `<div class="profile-pic-default">${arra2}</div>`;
 }
