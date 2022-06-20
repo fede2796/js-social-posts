@@ -32,6 +32,7 @@ const post = [
         likes: 830
     }
 ]
+
 // Milestone 2 - Prendendo come riferimento il layout di esempio presente nell'html, stampiamo i post del nostro feed.
 // -------------
 // FUNCTIONS
@@ -83,4 +84,34 @@ function drawallPost(postArray){
 
         postcontainer.innerHTML += postTemplate;
     }
+}
+
+// Milestone 3 - Se clicchiamo sul tasto "Mi Piace" cambiamo il colore al testo del bottone e incrementiamo il counter dei likes relativo.
+const allLikesClick = document.querySelectorAll('.js-like-button');
+const alllikeText = document.querySelectorAll('.js-likes-counter');
+
+for(let i = 0; i < allLikesClick.length; i++){
+
+    const thisLikebtn = allLikesClick[i];
+
+    thisLikebtn.addEventListener('click', function(event){
+        //Togliamo il comportamento di default del browser
+        event.preventDefault();
+
+        //Incremento il like solo se l'elemento che ho cliccato non ha classe clicked
+        if(!this.classList.contains('like-button--liked')){
+            //Aggiungo all'elemento cliccato la classe clicked
+            this.classList.add('like-button--liked');
+
+            const relatednumbertext = alllikeText[i];
+
+            let relatednumber = parseInt(relatednumbertext.innerHTML);
+
+            relatednumber++;
+
+            relatednumbertext.innerHTML = relatednumber;
+            console.log(relatednumber);
+        }
+    })
+
 }
